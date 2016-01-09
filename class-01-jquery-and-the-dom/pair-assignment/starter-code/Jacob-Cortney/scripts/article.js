@@ -6,7 +6,7 @@ function Article (opts) {
   this.author = opts.author,
   this.authorUrl = opts.authorUrl,
   this.publishedOn = opts.publishedOn,
-  this.author = opts.author;
+  this.body = opts.body;
 }
 
 Article.prototype.toHtml = function() {
@@ -22,6 +22,8 @@ Article.prototype.toHtml = function() {
   $newArticle.find('time').html(this.publishedOn);
 
   $newArticle.find('.article-body').html(this.body);
+
+  $newArticle.find('a#link').attr('href', this.authorUrl);
 
   // Include the publication date as a 'title' attribute to show on hover:
   $newArticle.find('time[pubdate]').attr('title', this.publishedOn)
