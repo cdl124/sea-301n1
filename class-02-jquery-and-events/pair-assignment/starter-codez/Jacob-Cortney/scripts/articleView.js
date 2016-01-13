@@ -1,4 +1,4 @@
-// Configure a view object, to hold all our functions for dynamic updates and article-related event handlers.
+
 var articleView = {};
 
 articleView.populateFilters = function() {
@@ -58,7 +58,9 @@ articleView.handleMainNav = function() {
 };
 
 articleView.setTeasers = function() {
+  $('article').each(function() {
   $('.article-body *:nth-of-type(n+2)').hide(); // Hide elements beyond the first 2 in any artcile body.
+  })
 
   $('.read-on').on('click', function (e) {
     e.preventDefault();
