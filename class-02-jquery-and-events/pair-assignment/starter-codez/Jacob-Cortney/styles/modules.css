@@ -1,7 +1,7 @@
 
 .site-header {
   padding: .1em;
-  background-color: #00d2ff;
+  background-color: #84CDC2;
 }
 
 .main-nav {
@@ -19,11 +19,11 @@
 }
 
 #filters {
-  margin-left: 20%;
-  margin-right: 20%;
+  list-style-type: none;
 }
 
 #filters select {
+  max-width: 90%;
 
 }
 
