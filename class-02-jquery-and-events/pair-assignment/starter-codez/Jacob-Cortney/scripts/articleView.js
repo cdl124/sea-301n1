@@ -65,7 +65,7 @@ articleView.setTeasers = function() {
   $('.read-on').on('click', function (e) {
     e.preventDefault();
     $(this).hide();
-    $(this).parent().find('.article-body *:nth-of-type(n+2)').show();
+    $(this).parent().find('.article-body *:nth-of-type(n+2)').show();// no read shows only the article associated with button
   })
 };
 
