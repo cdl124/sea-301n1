@@ -1,0 +1,41 @@
+/* TODO: Add some coordinated colors to make the blog more distinguished:
+         Use an accent color for all links. */
+
+body {
+  line-height: 1.5;
+  font-size: 100%;
+  color: #02595C;
+  background-color: #FEF2D8;
+}
+
+hr {
+  color: #EF504F;
+  margin: 1em;
+  width: 80%;
+}
+
+/*TEXT STYLES
+=======================================*/
+p {
+  font-size: 1em;
+}
+
+address {
+  display: inline-block;
+}
+
+/*LINK STYLES
+=======================================*/
+
+a, a:link, a:active {
+  color: #EF504F; /* Salmon pink color */
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: #F18C79; /* Lighter salmon color */
+}
+
+a:visited {
+  color: #F18C79; /* Lighter salmon color */
+}
