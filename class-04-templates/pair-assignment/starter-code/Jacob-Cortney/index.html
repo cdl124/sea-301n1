@@ -10,18 +10,19 @@
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
 
-    <!--
-      TODO: Add a script tag to hold the Handlebars template.
-        - Be sure to give it a meaningful id attribute.
-        - Move your old template structure to here.
-        - Insert placeholder keys.
-        - If your object doesn't have values you need yet, you can add those properties in the model.
-    -->
-    <script id="article-template" type="text/x-handlebars-template">
-    <h3>{{title}}</h3>
-      <p>by <a href="{{authorUrl}}">{{author}}</a> pubished on {{publishedOn}}</p>
-      {{{body}}}
-    </script>
+      <script id="article-template" type="text/x-handlebars-template">
+        <article data-author="{{author}}" data-category="{{category}}">
+          <header>
+          <h1>{{title}}</h1>
+          <div class="byline">
+            By <address><a href="{{authorUrl}}">{{author}}</a></address> published on {{publishedOn}}
+          </div>
+          </header>
+          <section class="article-body">{{{body}}}</section>
+          <a href="#" class="read-on">Read On &rarr;</a>
+        </article>
+      </script>
+
   </head>
   <body>
     <header class="site-header clearfix">
@@ -58,13 +59,13 @@
           </ul>
         </div>
       </section>
-      <div id="article-body"></div>
+
       <section id="about" class="tab-content">
         <header>
           Welcome to my Blog
         </header>
         <section>
-          <h1>Some of my intrests:</h1>
+          <h1>Some of my interests:</h1>
           <ul>
             <li>Coding</li>
             <li>Sharing what I've learned</li>
