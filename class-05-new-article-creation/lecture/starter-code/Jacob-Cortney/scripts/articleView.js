@@ -63,21 +63,30 @@ articleView.setTeasers = function() {
 };
 
 articleView.initNewArticlePage = function() {
-  // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later.
+  $('.tab-content').show();
 
   // TODO: The new articles we create will be copy/pasted into our source data file.
+
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
 
   // TODO: Add an event handler to update the preview and the export field if any inputs change.
 };
 
 articleView.create = function() {
-  // TODO: Set up a var to hold the new article we are creating.
-  // Clear out the #articles element, so we can put in the updated preview
+  var $getNewArticle = $('#new-form');
+  $('#articles').empty();
 
   // TODO: Instantiate an article based on what's in the form fields:
+  var $title = $getNewArticle.find('#article-title').text();
+  var $body = $getNewArticle.find('#article-body').text();
+  var $author = $getNewArticle.find('#article-author').text();
+  var $url = $getNewArticle.find('#article-author-url').text();
+  var $category = $getNewArticle.find('#article-category').text();
 
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
+  var newArticleTemplate = Handlebars.compile($('#new-form').text());
+
+  return newArticleTemplate(this);
 
   // TODO: Activate the highlighting of any code blocks:
 
