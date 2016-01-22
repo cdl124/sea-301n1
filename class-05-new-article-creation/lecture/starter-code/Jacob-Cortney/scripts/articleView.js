@@ -68,31 +68,35 @@ articleView.initNewArticlePage = function() {
   // TODO: The new articles we create will be copy/pasted into our source data file.
 
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
+  $('#article-export').hide();
 
-  // TODO: Add an event handler to update the preview and the export field if any inputs change.
+  // TODO: Add an event handler to update the preview and the export field if any inputs changes.
+  $('#new-form').on('focusout', function(e) {
+    e.preventDefault();
+    $('#article-export').show();
+    articleView.create();
+  });
 };
 
 articleView.create = function() {
-  var $getNewArticle = $('#new-form');
+  var $getNewArticle = {};
   $('#articles').empty();
 
-  // TODO: Instantiate an article based on what's in the form fields:
-  var $title = $getNewArticle.find('#article-title').text();
-  var $body = $getNewArticle.find('#article-body').text();
-  var $author = $getNewArticle.find('#article-author').text();
-  var $url = $getNewArticle.find('#article-author-url').text();
-  var $category = $getNewArticle.find('#article-category').text();
+  $getNewArticle = new Article ( {
+    title: $('#article-title').val(),
+    body: $('#article-body').val(),
+    author: $('#article-author').val(),
+    authorUrl: $('#article-author-url').val(),
+    category: $('#article-category').val()
+  });
+  $('#articles').append($getNewArticle.toHtml());
 
-  // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
-  var newArticleTemplate = Handlebars.compile($('#new-form').text());
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
 
-  return newArticleTemplate(this);
-
-  // TODO: Activate the highlighting of any code blocks:
-
-  // TODO: Export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
+  $('#article-json').val(JSON.stringify($getNewArticle));
 };
-
 
 articleView.initIndexPage = function() {
   articleView.populateFilters();
