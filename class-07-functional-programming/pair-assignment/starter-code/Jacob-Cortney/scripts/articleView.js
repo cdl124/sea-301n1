@@ -116,8 +116,6 @@
   articleView.initAdminPage = function() {
 
     var template = Handlebars.compile($('#author-template').text());
-    return template(this);
-
     // DONE: We use `forEach` here because we are relying on the side-effects of the callback function:
     // appending to the DOM.
     // The callback is not required to return anything.
@@ -128,6 +126,7 @@
     // DONE: Simply write the correct values to the page:
     $('#blog-stats .articles').text(Article.all.length);
     $('#blog-stats .words').text(Article.numWordsAll());
+    return template(this);
   };
 
   module.articleView = articleView;
