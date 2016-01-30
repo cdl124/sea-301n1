@@ -22,7 +22,7 @@
   // TODO: Set up a DB table for articles.
   Article.createTable = function(callback) {
     webDB.execute(
-      'CREATE TABLE IF NOT EXISTS articles (ID INTEGER PRIMARY KEY, Title VARCHAR(50) NOT NULL, Category VARCHAR(50) NOT NULL, Author VARCHAR(50) NOT NULL, AuthorUrl VARCHAR(255), PublishedOn DATETIME, Body TEXT NOT NULL);',
+      'CREATE TABLE IF NOT EXISTS articles (id INTEGER PRIMARY KEY, title VARCHAR(50) NOT NULL, author VARCHAR(50) NOT NULL, authorUrl VARCHAR(255), category VARCHAR(50) NOT NULL, publishedOn DATETIME, body TEXT NOT NULL);',
       function(result) {
         console.log('Successfully set up the articles table.', result);
         if (callback) callback();
@@ -44,8 +44,8 @@
     webDB.execute(
       [
         {
-          'sql': 'INSERT INTO articles (ID, Title, Category, Author, AuthorUrl, PublishedOn, Body) VALUES (?, ?, ?, ?, ?, ?, ?)',
-          'data': [this.id, this.title, this.category, this.author, this.authorUrl, this.publishedOn, this.body],
+          'sql': 'INSERT INTO articles (title, author, authorUrl, category, PublishedOn, Body) VALUES (?, ?, ?, ?, ?, ?)',
+          'data': [this.title, this.author, this.authorUrl, this.category,  this.publishedOn, this.body],
         }
       ],
       callback
@@ -57,7 +57,7 @@
     webDB.execute(
       [
         {
-          'sql': 'DELETE FROM articles WHERE id= (id, Title, Category, Author, AuhorUrl, PublishedOn, Body)',
+          'sql': 'DELETE FROM articles WHERE id= ?',
           'data': [this.id, this.title, this.category, this.author, this.authorUrl, this.publishedOn, this.body],
         }
       ],
